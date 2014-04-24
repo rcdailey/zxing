@@ -16,6 +16,7 @@
  */
 
 #include <limits>
+#include <algorithm>
 #include <zxing/pdf417/detector/Detector.h>
 #include <zxing/pdf417/detector/LinesSampler.h>
 #include <zxing/common/GridSampler.h>
