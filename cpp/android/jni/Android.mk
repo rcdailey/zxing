@@ -16,7 +16,17 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := zxing
+LOCAL_CPP_FEATURES += exceptions
+LOCAL_CPPFLAGS += -fexceptions -std=gnu++11
+
+LOCAL_MODULE := zxing
+
+LOCAL_CPPFLAGS += \
+   -DNO_ICONV
+
+LOCAL_C_INCLUDES += \
+   ../core/src
+
 LOCAL_SRC_FILES := \
     ../../core/src/zxing/BarcodeFormat.cpp \
     ../../core/src/zxing/Binarizer.cpp \
@@ -113,22 +123,22 @@ LOCAL_SRC_FILES := \
     ../../core/src/zxing/qrcode/detector/FinderPattern.cpp \
     ../../core/src/zxing/qrcode/detector/FinderPatternFinder.cpp \
     ../../core/src/zxing/qrcode/detector/FinderPatternInfo.cpp \
-    ../../core/tests/src/TestRunner.cpp \
-    ../../core/tests/src/common/BitArrayTest.cpp \
-    ../../core/tests/src/common/BitMatrixTest.cpp \
-    ../../core/tests/src/common/BitSourceTest.cpp \
-    ../../core/tests/src/common/CountedTest.cpp \
-    ../../core/tests/src/common/PerspectiveTransformTest.cpp \
-    ../../core/tests/src/common/reedsolomon/ReedSolomonTest.cpp \
-    ../../core/tests/src/qrcode/ErrorCorrectionLevelTest.cpp \
-    ../../core/tests/src/qrcode/FormatInformationTest.cpp \
-    ../../core/tests/src/qrcode/VersionTest.cpp \
-    ../../core/tests/src/qrcode/decoder/DataMaskTest.cpp \
-    ../../core/tests/src/qrcode/decoder/ModeTest.cpp \
+    #../../core/tests/src/TestRunner.cpp \
+    #../../core/tests/src/common/BitArrayTest.cpp \
+    #../../core/tests/src/common/BitMatrixTest.cpp \
+    #../../core/tests/src/common/BitSourceTest.cpp \
+    #../../core/tests/src/common/CountedTest.cpp \
+    #../../core/tests/src/common/PerspectiveTransformTest.cpp \
+    #../../core/tests/src/common/reedsolomon/ReedSolomonTest.cpp \
+    #../../core/tests/src/qrcode/ErrorCorrectionLevelTest.cpp \
+    #../../core/tests/src/qrcode/FormatInformationTest.cpp \
+    #../../core/tests/src/qrcode/VersionTest.cpp \
+    #../../core/tests/src/qrcode/decoder/DataMaskTest.cpp \
+    #../../core/tests/src/qrcode/decoder/ModeTest.cpp \
     ../../core/src/bigint/BigInteger.cc \
     ../../core/src/bigint/BigUnsigned.cc \
     ../../core/src/bigint/BigIntegerUtils.cc \
     ../../core/src/bigint/BigIntegerAlgorithms.cc \
     ../../core/src/bigint/BigUnsignedInABase.cc
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
